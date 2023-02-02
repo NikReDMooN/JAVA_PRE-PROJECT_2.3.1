@@ -1,0 +1,59 @@
+package hibernate.dao;
+
+import hibernate.model.User;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import org.springframework.stereotype.Repository;
+
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.List;
+
+@Repository
+public class UserDaoImp implements UserDao{
+
+    @Override
+    public void add(User user) {
+        entityManager.merge(user);
+     //   entityManager.getTransaction().commit();
+    }
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+/*    @PersistenceContext
+    public UserDaoImp (EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }*/
+
+    @Override
+    public void delete(Long id) {
+        User  user = entityManager.find(User.class, id);
+        entityManager.remove(user);
+/*        entityManager.getTransaction().commit();*/
+
+    }
+
+    @Override
+    public User getById(Long id) {
+        User user = entityManager.find(User.class, id);
+        return user;
+    }
+
+    @Override
+    public void edit(User user) {
+        entityManager.merge(user);
+    }
+
+    @Override
+    public List<User> getUsers() {
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<User> criteria = builder.createQuery(User.class);
+        criteria.from(User.class);
+        return entityManager.createQuery(criteria).getResultList();
+    }
+
+}
