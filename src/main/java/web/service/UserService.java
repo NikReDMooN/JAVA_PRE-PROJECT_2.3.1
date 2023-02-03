@@ -1,6 +1,6 @@
-package hibernate.service;
+package web.service;
 
-import hibernate.model.User;
+import web.model.User;
 
 import java.util.List;
 

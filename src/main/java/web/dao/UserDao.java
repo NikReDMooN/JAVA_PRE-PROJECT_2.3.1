@@ -1,6 +1,6 @@
-package hibernate.dao;
+package web.dao;
 
-import hibernate.model.User;
+import web.model.User;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package hibernate.dao;
+package web.dao;
 
-import hibernate.model.User;
-import javax.persistence.TypedQuery;
+import web.model.User;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import org.springframework.stereotype.Repository;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
